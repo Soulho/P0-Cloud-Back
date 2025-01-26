@@ -1,22 +1,29 @@
-version: "3.9"
+version: '3.8'
+
 services:
-  backend:
+  api:
     build:
       context: .
       dockerfile: Dockerfile
+    container_name: fastapi_app
     ports:
-      - "8080:8080"
-    environment:
-      - DATABASE_URL=postgresql://fastapi_user:password@db/tareasdb
+      - "8000:8000"
     depends_on:
       - db
+    environment:
+      DATABASE_URL: "postgresql://fastapi_user:password@db:5432/tareasdb"
 
   db:
-    image: postgres:17
-    restart: always
+    image: postgres:14
+    container_name: postgres_db
     environment:
       POSTGRES_USER: fastapi_user
       POSTGRES_PASSWORD: password
       POSTGRES_DB: tareasdb
     ports:
-      - "5433:5432"
+      - "5433:5432"  # Redirigir el puerto local 5433 al puerto 5432 del contenedor
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
