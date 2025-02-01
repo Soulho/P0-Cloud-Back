@@ -9,7 +9,8 @@ services:
     ports:
       - "8000:8000"
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     environment:
       DATABASE_URL: "postgresql://fastapi_user:password@db:5432/tareasdb"
 
@@ -21,9 +22,14 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: tareasdb
     ports:
-      - "5433:5432"  # Redirigir el puerto local 5433 al puerto 5432 del contenedor
+      - "5432:5432"  # Redirigir el puerto local 5433 al puerto 5432 del contenedor
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "fastapi_user"]
+      interval: 10s
+      retries: 5
+      timeout: 5s
 
 volumes:
   postgres_data:
