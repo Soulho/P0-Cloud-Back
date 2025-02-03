@@ -22,7 +22,7 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: tareasdb
     ports:
-      - "5432:5432"  # Redirigir el puerto local 5433 al puerto 5432 del contenedor
+      - "5433:5432"  # Redirigir el puerto local 5433 al puerto 5432 del contenedor
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:

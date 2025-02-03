@@ -12,6 +12,7 @@ DEFAULT_PROFILE_IMAGE = "default_profile_icon.png"
 
 @router.post("/users", response_model=Token)
 def create_user(user: UsuarioCreate, db: Session = Depends(get_db)):
+    print("Datos recibidos:", user.dict())
     existing_user = db.query(Usuario).filter(Usuario.nombre_usuario == user.nombre_usuario).first()
     if existing_user:
         raise HTTPException(

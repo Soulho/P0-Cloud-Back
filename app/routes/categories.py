@@ -69,3 +69,8 @@ def delete_category(id: int, db: Session = Depends(get_db), current_user_id: int
     db.delete(categoria_db)
     db.commit()
     return {"message": "Categoría eliminada exitosamente"}
+
+@router.get("/categories", response_model=List[CategoriaResponse])
+def get_all_categories(db: Session = Depends(get_db), current_user_id: int = Depends(get_current_user_id)):
+    categorias = db.query(Categoria).filter(Categoria.id_usuario == current_user_id).all()
+    return categorias

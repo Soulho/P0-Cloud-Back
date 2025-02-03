@@ -128,28 +128,3 @@ def get_task_by_id(id: int, db: Session = Depends(get_db), current_user_id: int 
         )
     
     return tarea
-
-@router.patch("/tareas/{id}/estado", response_model=TareaResponse)
-def update_task_status(id: int, estado: str, db: Session = Depends(get_db), current_user_id: int = Depends(get_current_user_id)):
-    
-    tarea = db.query(Tarea).filter(Tarea.id == id).first()
-    if not tarea:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND, detail="Tarea no encontrada"
-        )
-    
-    # Validar el usuario
-    if tarea.id_usuario != current_user_id:
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail="No tienes permiso para actualizar esta tarea"
-        )
-    try:
-        new_estado = Estado(estado)  # Convierte el string a Enum
-    except ValueError:
-        raise HTTPException(status_code=400, detail="Estado inválido")
-    # Actualizar el estado
-    tarea.estado = new_estado
-    db.commit()
-    db.refresh(tarea)
-    return tarea
