@@ -1,2 +1,2 @@
 Documento de despliegue: https://uniandes-my.sharepoint.com/:w:/g/personal/d_fuentese_uniandes_edu_co/EQQvf8KimaxHn-M_SesHz08Bo4nR9dIxieotCEW4cHjC2w?e=vrj9CU
-Video de aplicación: 
+Video de aplicación: https://uniandes-my.sharepoint.com/:v:/g/personal/d_fuentese_uniandes_edu_co/EQ8Um9wkAuJJhDhqiF44UdkBOHQEw3yNNMYFkvidIzhssw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=PW6DwY
