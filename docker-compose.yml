@@ -24,7 +24,8 @@ services:
     ports:
       - "5433:5432"  # Redirigir el puerto local 5433 al puerto 5432 del contenedor
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      -  p0_cloud_postgres_data:/var/lib/postgresql/data
+      - ./initdb:/docker-entrypoint-initdb.d
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "fastapi_user"]
       interval: 10s
@@ -32,4 +33,4 @@ services:
       timeout: 5s
 
 volumes:
-  postgres_data:
+  p0_cloud_postgres_data:
